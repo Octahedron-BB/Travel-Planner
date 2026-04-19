@@ -1,0 +1,450 @@
+:root {
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --bg-dark: #0f172a;
+    --text-light: #f8fafc;
+    --text-dim: #cbd5e1;
+    --glass-bg: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    padding-bottom: 50px;
+}
+
+/* Dynamic Background Shapes */
+.background-shapes {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.5;
+    animation: float 20s infinite alternate linear;
+}
+
+.shape-1 {
+    width: 500px; height: 500px;
+    background: #ec4899;
+    top: -10%; left: -10%;
+}
+
+.shape-2 {
+    width: 600px; height: 600px;
+    background: #3b82f6;
+    bottom: -20%; right: -10%;
+    animation-duration: 25s;
+}
+
+.shape-3 {
+    width: 300px; height: 300px;
+    background: #8b5cf6;
+    top: 40%; left: 40%;
+    animation-duration: 15s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(100px, 50px) rotate(180deg); }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+header h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+header h1 span {
+    color: var(--primary);
+}
+
+header p {
+    color: var(--text-dim);
+    font-size: 1.3rem;
+    margin-top: 10px;
+}
+
+/* Glassmorphism */
+.glass-card {
+    background: rgba(30, 41, 59, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.form-section {
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    padding: 40px;
+}
+
+#travel-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+.input-group input, .input-group select {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 16px 20px;
+    border-radius: 14px;
+    color: white;
+    font-size: 1.05rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus, .input-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+button[type="submit"] {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--primary), #8b5cf6);
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 14px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.8);
+}
+
+.loader {
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Results */
+.weather-tips {
+    padding: 30px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.weather-tips h3 {
+    color: #fbbf24;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.weather-tips p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+.itinerary-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.itinerary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.itinerary-card {
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.itinerary-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.card-img-wrapper {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    background: #1e293b;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.itinerary-card:hover .card-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 24px;
+    flex-grow: 1;
+}
+
+.day-badge {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.card-content p.loc-desc {
+    color: var(--text-dim);
+    line-height: 1.6;
+    font-size: 1.05rem;
+    margin-bottom: 15px;
+}
+
+.photography-tips {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.photography-tips h4 {
+    color: #a78bfa;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.photography-tips p {
+    color: #94a3b8 !important;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 6px;
+}
+
+.photography-tips p:last-child {
+    margin-bottom: 0;
+}
+
+.photography-tips strong {
+    color: #e2e8f0;
+}
+
+/* New Elements Styles */
+.error-card {
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    padding: 30px;
+    text-align: center;
+    border-color: rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.error-card h3 {
+    color: #fca5a5;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.summary-card {
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    padding: 30px;
+    text-align: center;
+}
+
+#summary-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+.logistics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto 50px auto;
+}
+
+.weather-tips, .transport-tips {
+    padding: 30px;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.transport-tips h3 {
+    color: #38bdf8;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.logistics-sub, .logistics-advice, #weather-text {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+.logistics-advice {
+    color: #cbd5e1;
+    font-size: 1rem;
+}
+
+#transport-list {
+    list-style-type: none;
+}
+
+#transport-list li {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+#transport-list li::before {
+    content: "•";
+    color: #38bdf8;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.day-section {
+    margin-bottom: 60px;
+}
+
+.day-header {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.day-header h3 {
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    #travel-form {
+        grid-template-columns: 1fr;
+    }
+    header h1 {
+        font-size: 3rem;
+    }
+    .logistics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Map Integration Styles */
+.map-toggle-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 18px;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    color: #c7d2fe;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    width: 100%;
+}
+
+.map-toggle-btn:hover {
+    background: rgba(99, 102, 241, 0.35);
+    color: #fff;
+    border-color: rgba(99, 102, 241, 0.8);
+}
+
+.map-container {
+    margin-top: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.2);
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 250px;
+    border: none;
+    display: block;
+}

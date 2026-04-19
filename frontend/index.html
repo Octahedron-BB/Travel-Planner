@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderlustAI | Your Dream Journey</title>
+    <meta name="description" content="Design your perfect travel itinerary in seconds.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Wanderlust<span>AI</span></h1>
+            <p>Design your perfect itinerary in seconds.</p>
+        </header>
+
+        <main>
+            <section class="glass-card form-section">
+                <form id="travel-form">
+                    <div class="input-group">
+                        <label for="origin">Origin</label>
+                        <input type="text" id="origin" name="origin" placeholder="e.g. New York, NY" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" id="destination" name="destination" placeholder="e.g. Kyoto, Japan" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="departure_date">Departure Date</label>
+                        <input type="date" id="departure_date" name="departure_date" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="return_date">Return Date</label>
+                        <input type="date" id="return_date" name="return_date" required>
+                    </div>
+                    <div class="input-group" style="grid-column: 1 / -1;">
+                        <label for="style">Travel Style</label>
+                        <input type="text" id="style" name="style" placeholder="e.g. Backpacking, Luxury, Foodie" required>
+                    </div>
+                    <button type="submit" id="submit-btn">
+                        <span class="btn-text">Generate Plan</span>
+                        <div class="loader hidden" id="btn-loader"></div>
+                    </button>
+                </form>
+            </section>
+
+            <div id="error-message" class="hidden glass-card error-card">
+                <h3>Oops! Something went wrong</h3>
+                <p id="error-text">Please try again later.</p>
+            </div>
+
+            <section id="result-section" class="hidden">
+                <div id="trip-summary" class="glass-card summary-card">
+                    <h2 id="summary-text"></h2>
+                </div>
+
+                <div class="logistics-grid">
+                    <div class="weather-tips glass-card">
+                        <h3>🌤 Weather Info</h3>
+                        <p id="weather-text"></p>
+                        <p id="temp-text" class="logistics-sub"></p>
+                        <p id="clothing-text" class="logistics-advice"></p>
+                    </div>
+                    <div class="transport-tips glass-card">
+                        <h3>🚆 Transport Tips</h3>
+                        <ul id="transport-list"></ul>
+                    </div>
+                </div>
+                
+                <h2 class="itinerary-title">Your Itinerary</h2>
+                <div id="itinerary-list">
+                    <!-- Cards will be dynamically populated here, grouped by days -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

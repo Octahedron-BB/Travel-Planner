@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # 旅遊小幫手後端
+  travel-backend:
+    build: ./backend
+    container_name: travel-backend
+    restart: unless-stopped
+    env_file: .env
+    networks:
+      - q2tg_default
+
+  # 旅遊小幫手前端
+  travel-frontend:
+    build: ./frontend
+    container_name: travel-frontend
+    restart: unless-stopped
+    depends_on:
+      - travel-backend
+    networks:
+      - q2tg_default
+
+networks:
+  # 直接引用你原本 q2tg 產生的預設網路
+  q2tg_default:
+    external: true
